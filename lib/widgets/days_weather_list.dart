@@ -37,7 +37,7 @@ class DaysWeatherList extends StatelessWidget {
       children: [
         const Padding(
           padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0, bottom: 8.0),
-          child: Text('5-DAYS FORECAST', style: TextStyle(fontSize: 14, color: Colors.grey)),
+          child: Text('5-DAY FORECAST', style: TextStyle(fontSize: 14, color: Colors.grey)),
         ),
         Column(
           children: _getItems(weatherData?.daily, weatherData?.current?.isDay ?? 1),
