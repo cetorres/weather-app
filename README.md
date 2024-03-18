@@ -6,27 +6,24 @@ A weather app made in Flutter using Open Meteo (<https://open-meteo.com/>) API.
 
 ### Preview
 
-<img
-  src="screenshot_01.png"
-  alt="screenshot_01"
-  title="screenshot_01"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-
-<img
-  src="screenshot_02.png"
-  alt="screenshot_02"
-  title="screenshot_02"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-
-<img
-  src="screenshot_03.png"
-  alt="screenshot_03"
-  title="screenshot_03"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+| Home | Settings | Location search
+:--------------:|:-------------:|:-------------:
+![screenshot_01](screenshot_01.png) | ![screenshot_02](screenshot_02.png) | ![screenshot_03](screenshot_03.png)
 
 ### Android APK
 
 Just copy and install the [weather-app-release.apk](weather-app-release.apk) on your Android device.
+
+## Features
+
+- App changes theme (dark/light) according to night/day.
+- Detects current user location and gets weather data (Open Meteo Weather Forecast API)
+- Show current temperature and condition
+- Shows hourly temperatures and conditions for the next 24h
+- Shows 5-day forecast with max and min temperatures and conditions
+- Allows search for a specific location (uses Open Meteo Geocoding API)
+- Saves user selections (in SharedPreferences) for current location and units
+- Uses beautiful Lottie animations to show current weather conditions
 
 ### Debug run
 
