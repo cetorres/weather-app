@@ -55,21 +55,27 @@ class HomeScreen extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .headlineMedium!
-                        .copyWith(color: getForegroundColor(weatherData?.current?.isDay)),
+                        .copyWith(fontWeight: FontWeight.w300, color: getForegroundColor(weatherData?.current?.isDay)),
                   ),
                   Text(
-                    weatherData != null ? '${weatherData.current?.temperature2m ?? 0.round()}°' : '--',
+                    weatherData != null ? ' ${weatherData.current?.temperature2m?.round() ?? 0}°' : '--',
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge!
-                        .copyWith(color: getForegroundColor(weatherData?.current?.isDay)),
+                        .copyWith(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 90,
+                        color: getForegroundColor(weatherData?.current?.isDay)),
                   ),
                   Text(
                     weatherData != null ? '${WEATHER_CODES[weatherData.current?.weatherCode][0]}' : '',
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall!
-                        .copyWith(color: getForegroundColor(weatherData?.current?.isDay)),
+                        .copyWith(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 23,
+                        color: getForegroundColor(weatherData?.current?.isDay)),
                   ),
                   weatherData != null ? Lottie.asset(WEATHER_CODES[weatherData.current?.weatherCode][1][weatherData.current?.isDay==1?0:1], width: 100, height: 100) : Container(),
                 ],
