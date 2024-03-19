@@ -23,7 +23,6 @@ class HourlyWeatherList extends StatelessWidget {
   Widget build(BuildContext context) {
     final weatherData = context.watch<WeatherProvider>().weatherData;
     final timeStartIndex = _getTimeStartIndex(weatherData?.hourly?.time);
-    print('timeStartIndex: $timeStartIndex');
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
