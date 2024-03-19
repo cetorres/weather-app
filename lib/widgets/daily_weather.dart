@@ -23,22 +23,25 @@ class DailyWeather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+        dense: true,
         title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
             width: 50,
             child: Text(index == 0 ? 'Today' : getWeekDayFromTimestamp(time),
-                style: TextStyle(fontSize: 16, color: getForegroundColor(isDay)))),
+                    style: TextStyle(fontWeight: FontWeight.w300, fontSize: 16, color: getForegroundColor(isDay)))),
         SizedBox(width: 36, child: SvgPicture.asset(WEATHER_CODES[weatherCode][2], color: getForegroundColor(isDay))),
         SizedBox(
             width: 36,
             child:
-                Text('${temperatureMin.round().toString()}°', style: TextStyle(fontSize: 18, color: Colors.blue[600]))),
+                Text('${temperatureMin.round().toString()}°',
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18, color: Colors.blue[600]))),
         SizedBox(
             width: 36,
             child:
-                Text('${temperatureMax.round().toString()}°', style: TextStyle(fontSize: 18, color: Colors.red[600]))),
+                Text('${temperatureMax.round().toString()}°',
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18, color: Colors.red[600]))),
       ],
     ));
   }

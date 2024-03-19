@@ -20,9 +20,11 @@ class HourlyWeather extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            Text(index == 0 ? 'NOW' : getHourFromTimestamp(time), style: TextStyle(fontSize: 16, color: getForegroundColor(isDay))),
+            Text(index == 0 ? 'NOW' : getHourFromTimestamp(time),
+                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 16, color: getForegroundColor(isDay))),
             SvgPicture.asset(WEATHER_CODES[weatherCode][2], color: getForegroundColor(isDay)),
-            Text('${temperature.round().toString()}°', style: TextStyle(fontSize: 18, color: getForegroundColor(isDay)))
+            Text('${temperature.round().toString()}°',
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18, color: getForegroundColor(isDay)))
           ],
         ),
       ),

@@ -8,8 +8,48 @@ import 'package:weather_app/utils.dart';
 import 'package:weather_app/widgets/days_weather_list.dart';
 import 'package:weather_app/widgets/hourly_weather_list.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return _HomeScreenState();
+  }
+}
+
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        // RESUMED - Updating weather data...
+        context.read<WeatherProvider>().getWeather();
+        break;
+      case AppLifecycleState.inactive:
+        // INACTIVE
+        break;
+      case AppLifecycleState.paused:
+        // PAUSED
+        break;
+      case AppLifecycleState.detached:
+        // DETACHED
+        break;
+      case AppLifecycleState.hidden:
+      // HIDDEN
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +63,11 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         forceMaterialTransparency: true,
         leading: context.watch<WeatherProvider>().isLoading
-            ? Transform.scale(scale: 0.4, child: CircularProgressIndicator(color: getForegroundColor(weatherData?.current?.isDay),))
+            ? Transform.scale(
+                scale: 0.4,
+                child: CircularProgressIndicator(
+                  color: getForegroundColor(weatherData?.current?.isDay),
+                ))
             : null,
         actions: [
           IconButton(
@@ -59,25 +103,47 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Text(
                     weatherData != null ? ' ${weatherData.current?.temperature2m?.round() ?? 0}°' : '--',
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge!
-                        .copyWith(
+                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
                         fontWeight: FontWeight.w300,
                         fontSize: 90,
                         color: getForegroundColor(weatherData?.current?.isDay)),
                   ),
                   Text(
                     weatherData != null ? '${WEATHER_CODES[weatherData.current?.weatherCode][0]}' : '',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                         fontWeight: FontWeight.w300,
                         fontSize: 23,
                         color: getForegroundColor(weatherData?.current?.isDay)),
                   ),
-                  weatherData != null ? Lottie.asset(WEATHER_CODES[weatherData.current?.weatherCode][1][weatherData.current?.isDay==1?0:1], width: 100, height: 100) : Container(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          weatherData != null ? 'L: ${weatherData.daily?.temperature2mMin?[0].round() ?? 0}°' : '--',
+                          style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 20,
+                              color: getForegroundColor(weatherData?.current?.isDay)),
+                        ),
+                        const SizedBox(width: 16),
+                        Text(
+                          weatherData != null ? 'H: ${weatherData.daily?.temperature2mMax?[0].round() ?? 0}°' : '--',
+                          style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 20,
+                              color: getForegroundColor(weatherData?.current?.isDay)),
+                        ),
+                      ],
+                    ),
+                  ),
+                  weatherData != null
+                      ? Lottie.asset(
+                          WEATHER_CODES[weatherData.current?.weatherCode][1][weatherData.current?.isDay == 1 ? 0 : 1],
+                          width: 100,
+                          height: 100)
+                      : Container(),
                 ],
               ),
             ),

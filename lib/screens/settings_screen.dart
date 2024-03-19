@@ -63,11 +63,11 @@ class SettingsScreen extends StatelessWidget {
           ),
           const Divider(),
           AboutListTile(
-             applicationIcon: Image.asset('assets/icon.png', scale:1.0, width:36.0, height:36.0),
+            applicationIcon: Image.asset('assets/icon.png', scale: 1.0, width: 36.0, height: 36.0),
             applicationName: 'Weather',
             aboutBoxChildren: const [
-              Text('This is a simple weather app created to showcase my Flutter skills.'),
-              Text('Please visit my GitHub profile for more info: https://github.com/cetorres'),
+              Text('A weather app made in Flutter using Open Meteo (https://open-meteo.com/) API.'),
+              Text('Please visit the GitHub repo for more info: https://github.com/cetorres/weather-app.'),
             ],
             applicationVersion: '1.0',
             applicationLegalese: '© 2024 Carlos E. Torres',
