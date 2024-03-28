@@ -20,7 +20,7 @@ Just copy and install the [weather-app-release.apk](weather-app-release.apk) on 
 - Detects current user location and gets weather data (Open Meteo Weather Forecast API)
 - Show current temperature and condition
 - Shows hourly temperatures and conditions for the next 24h
-- Shows 5-day forecast with max and min temperatures and conditions
+- Shows 10-day forecast with max and min temperatures and conditions
 - Allows search for a specific location (uses Open Meteo Geocoding API)
 - Saves user selections (in SharedPreferences) for current location and units
 - Uses beautiful Lottie animations to show current weather conditions
@@ -34,6 +34,28 @@ $ flutter run
 ```
 
 And select your device or emulator.
+
+### Build
+
+Build a release APK for Android:
+
+```sh
+$ flutter build apk --release
+```
+
+### Release run for iOS
+
+Discover the connected devices:
+
+```sh
+$ fluter devices
+```
+
+Select a device ID to run as release:
+
+```sh
+$ flutter run -d [device_id] --release
+```
 
 ## More info
 
