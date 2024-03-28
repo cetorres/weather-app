@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +8,8 @@ import 'package:weather_app/widgets/hourly_weather.dart';
 
 class HourlyWeatherList extends StatelessWidget {
   const HourlyWeatherList({super.key});
+
+  final totalHours = 25;
 
   int _getTimeStartIndex(List<int>? times) {
     if (times == null) return 0;
@@ -35,7 +39,7 @@ class HourlyWeatherList extends StatelessWidget {
           height: 90,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: weatherData?.hourly?.time?.sublist(timeStartIndex).length,
+              itemCount: min(totalHours, weatherData?.hourly?.time?.sublist(timeStartIndex).length ?? 0),
               itemBuilder: (_, index) {
                 final time = weatherData?.hourly?.time?.sublist(timeStartIndex)[index] ?? 0;
                 final weatherCode = weatherData?.hourly?.weatherCode?.sublist(timeStartIndex)[index] ?? 0;
