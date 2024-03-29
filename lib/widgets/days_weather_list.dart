@@ -7,7 +7,7 @@ import 'package:weather_app/widgets/daily_weather.dart';
 class DaysWeatherList extends StatelessWidget {
   const DaysWeatherList({super.key});
 
-  final totalDays = 11;
+  final totalDays = 7;
 
   List<Widget> _getItems(Daily? dailyData, int isDay) {
     List<Widget> items = [];
@@ -35,9 +35,9 @@ class DaysWeatherList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0, bottom: 8.0),
-          child: Text('10-DAY FORECAST', style: TextStyle(fontSize: 14, color: Colors.grey)),
+        Padding(
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0, bottom: 8.0),
+          child: Text('$totalDays-DAY FORECAST', style: const TextStyle(fontSize: 14, color: Colors.grey)),
         ),
         Column(
           children: _getItems(weatherData?.daily, weatherData?.current?.isDay ?? 1),

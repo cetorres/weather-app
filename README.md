@@ -20,7 +20,7 @@ Just copy and install the [weather-app-release.apk](weather-app-release.apk) on 
 - Detects current user location and gets weather data (Open Meteo Weather Forecast API)
 - Show current temperature and condition
 - Shows hourly temperatures and conditions for the next 24h
-- Shows 10-day forecast with max and min temperatures and conditions
+- Shows 7-day forecast with max and min temperatures and conditions
 - Allows search for a specific location (uses Open Meteo Geocoding API)
 - Saves user selections (in SharedPreferences) for current location and units
 - Uses beautiful Lottie animations to show current weather conditions
